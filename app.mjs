@@ -1,6 +1,7 @@
 import express from "express";
 import { logger } from "./middlewares/logger.mjs";
 import userRouter from "./routes/user.route.mjs";
+import todoRouter from "./routes/todo.route.mjs";
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: true })); // middleware to parse URL-enco
 
 app.use(logger);
 app.use("/users", userRouter);
+app.use("/todos", todoRouter);
 
 app.get("/", (request, response) => {
     return response.status(200).send({
