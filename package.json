@@ -2,18 +2,27 @@
     "name": "alex_batch",
     "version": "1.0.0",
     "description": "",
-    "main": "app.mjs",
-    "scripts": {
-        "dev": "nodemon app.mjs"
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/techolasmern/express.git"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/techolasmern/express/issues"
+    },
+    "homepage": "https://github.com/techolasmern/express#readme",
+    "main": "app.mjs",
     "type": "module",
+    "scripts": {
+        "dev": "nodemon app.mjs"
+    },
     "dependencies": {
+        "ejs": "^5.0.1",
         "express": "^5.2.1"
     },
     "devDependencies": {
-        "nodemon": "^3.1.14"
+        "nodemon": "^3.0.1"
     }
 }
