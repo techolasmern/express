@@ -20,6 +20,7 @@ import passwordController from "../controllers/password.controller.mjs";
 const passRouter = Router();
 
 passRouter.post("/hash", passwordController.hash_password);
+passRouter.post("/compare", passwordController.compare_password);
 
 export default passRouter;
 
