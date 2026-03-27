@@ -19,6 +19,16 @@ app.use("/todo", todoRoute);
 app.use("/password", passRouter);
 app.use("/auth", authRouter);
 
+// 404
+app.use((req, res) => {
+    return res.status(404).send({ message: "Path not found" });
+})
+
+// Error Handler
+app.use((err, req, res, next) => {
+    return res.status(404).send({ message: "All Error" });
+})
+
 app.listen(8080, () => {
     console.log('Server is running on port 8080')
 })

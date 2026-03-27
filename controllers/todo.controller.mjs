@@ -1,7 +1,11 @@
 const todos = [];
 
 const renderTodoPage = (request, response) => {
-    return response.status(200).render("todo", { todos });
+    try {
+        throw new Error("Error")
+    } catch (e) {
+        throw new Error("Error");
+    }
 }
 
 const createTask = (req, res) => {
