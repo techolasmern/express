@@ -2,9 +2,11 @@ const todos = [];
 
 const renderTodoPage = (request, response) => {
     try {
-        throw new Error("Error")
+        const err = new Error("Not implemented");
+        err.statusCode = 432;
+        throw err;
     } catch (e) {
-        throw new Error("Error");
+        throw new Error(e);
     }
 }
 

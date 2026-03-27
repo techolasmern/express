@@ -25,8 +25,8 @@ app.use((req, res) => {
 })
 
 // Error Handler
-app.use((err, req, res, next) => {
-    return res.status(404).send({ message: "All Error" });
+app.use((err, req, res, next) => { // error first callback
+    return res.status(err?.statusCode || 500).send({ message: err?.message || "Internal Server Error" });
 })
 
 app.listen(8080, () => {
