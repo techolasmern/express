@@ -3,9 +3,11 @@ import sampleRoute from './routes/sample.route.mjs';
 import todoRoute from './routes/todo.route.mjs';
 import passRouter from './routes/password.route.mjs';
 import authRouter from './routes/auth.route.mjs';
+import cors from "cors"
 
 const app = express()
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

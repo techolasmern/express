@@ -32,4 +32,21 @@ const userRegistration = async (request, response) => {
     }
 }
 
-export default { userRegistration }
+const userLogin = async (request, response) => {
+    try {
+        const body = request.body;
+        for(const key in body){
+            if(body[key] == "") return response.status(400).send({ message: "All fields are required" });
+        }
+        // validate fields using regex
+        const user = users.find(u => u.email === body?.email);
+        if (!user) return response.status(404).send({ message: "User not found" });
+        const isValidPassword = await bcrypt.compare(body.password, user.password);
+        if (!isValidPassword) return response.status(400).send({ message: "Invalid password" });
+        return response.status(200).send({ user });
+    } catch (e) {
+        return response.status(500).send({ message: e.message || "Internal server error" });
+    }
+}
+
+export default { userRegistration, userLogin }
