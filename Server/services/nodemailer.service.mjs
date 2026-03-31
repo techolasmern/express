@@ -1,12 +1,14 @@
 import { transporter } from "../config/nodemailer.config.mjs";
+import fs from "fs";
 
-export const sendEmail = async () => {
+export const sendEmail = async (to) => {
     try {
+        const html = fs.readFileSync("./public/mail.html", { encoding: "utf-8" });
         const mailingOptions = {
             from: "Your email",
-            to: "to email address",
+            to,
             subject: "Test Email",
-            html: "<h1>Test Email</h1>"
+            html
         }
         const info = await transporter.sendMail(mailingOptions);
         return info
