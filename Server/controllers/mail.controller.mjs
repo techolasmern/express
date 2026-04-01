@@ -1,4 +1,5 @@
 import { sendEmail } from "../services/nodemailer.service.mjs";
+import { generateOTP } from "../services/otp.service.mjs";
 
 const sendMailUsingNodeMailer = async (request, response) => {
     try {
@@ -11,4 +12,16 @@ const sendMailUsingNodeMailer = async (request, response) => {
     }
 }
 
-export default { sendMailUsingNodeMailer }
+const sendOtp = async (request, response) => { 
+    try {
+        const { receiver_mail } = request.body;
+        const otp = generateOTP(4);
+        const res = await sendEmail(receiver_mail, otp);
+        if(!res) return response.status(400).send({ message: "OTP not sent" });
+        return response.status(200).send({ message: "OTP sent successfully", otp });
+    } catch (error) {
+        return response.status(500).send({ message: error.message || "Internal server error" });   
+    }
+}
+
+export default { sendMailUsingNodeMailer, sendOtp }
