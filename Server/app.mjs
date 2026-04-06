@@ -8,6 +8,7 @@ import cors from "cors"
 import mailRouter from './routes/mail.route.mjs';
 import otpRouter from './routes/otp.route.mjs';
 import session from 'express-session';
+import tokenRouter from "./routes/token.route.mjs";
 
 const app = express()
 
@@ -35,6 +36,7 @@ app.use("/password", passRouter);
 app.use("/auth", authRouter);
 app.use("/mail", mailRouter);
 app.use("/otp", otpRouter);
+app.use("/token", tokenRouter);
 
 // 404
 app.use((req, res) => {
